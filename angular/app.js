@@ -9,50 +9,32 @@
 
     function TestController($scope, $http, $rootScope, $timeout, $location) {
 
+        async function Init(){
 
-        $scope.form = {
-            name: '',
-            age: null
+            // SOURCE OF DATA
+            // https://randomuser.me/documentation
+
+            var results = await $http.get("https://randomuser.me/api/?results=5");
+            $scope.people = results.data.results;
+            $scope.$apply()
         }
 
-        $scope.name = "William Hailey"
-        $scope.nameArray = [
-            {name: "Will", age: 32},
-            {name: "Amanda", age: 24},
-        ]
+        // Run Init() function as soon as the project loads
+        Init();
 
-        $scope.AddPerson = function (){
-            // $.nameArray.push({name: "Ryan", age: 44})
-            $scope.nameArray.push($scope.form);
-            $scope.form = {
-                name: '',
-                age: null
-            }
-
+        $scope.AddPerson = async function (){
+            var results = await  $http.get("https://randomuser.me/api");
+            $scope.people =  $scope.people.concat(results.data.results);
+            $scope.$apply()
         }
 
 
-        $scope.ChangeButtonColor = function (){
-            if ($scope.nameArray.length % 2 === 0){
-                return 'btn-primary'
-            }
-            else return 'btn-danger'
-        }
-        $scope.DeletePerson = function (person){
-            var index = $scope.nameArray.findIndex((a => a.name === person.name));
-             $scope.nameArray.splice(index,1);
-            console.log($scope.nameArray);
-
+        $scope.ViewProfile = function (person){
+            alert(person.name.last)
         }
 
 
-        $scope.ngStyleExample = function (person){
-            if (person && person.name.length % 2 === 0){
-                return {'color': 'red'}
-            }
-            else return {'color': 'blue'}
-        }
-
+    
 
 
 
