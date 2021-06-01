@@ -65,6 +65,7 @@
               <th>Name</th>
               <th>Age</th>
               <th>Gender</th>
+              <th>Email</th>
 
             </tr>
           
@@ -78,6 +79,7 @@
             <td>{{person.name.last}}, {{person.name.first}}</td>
             <td ng-click="AddYear(person)">{{person.dob.age}}</td>
             <td>{{person.gender}}</td>
+            <td>{{person.email}}</td>
 
             <td >
               <button class="btn" ng-class="ButtonColor(person)" ng-click="ViewProfile(person)" >View</button>
