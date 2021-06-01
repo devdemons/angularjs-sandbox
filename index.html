@@ -60,17 +60,27 @@
         <table class="table table-bordered">
           <thead>
             <tr>
+              <th>Image</th>
+
               <th>Name</th>
               <th>Age</th>
+              <th>Gender</th>
+
             </tr>
           
           </thead>
           <tbody>
            <tr ng-repeat="person in people" >
+            <td>
+              <img id="user1" src="{{person.picture.thumbnail}}" ng-click="AlertName(person)" />
+            </td>
+
             <td>{{person.name.last}}, {{person.name.first}}</td>
-            <td>{{person.age}}</td>
+            <td ng-click="AddYear(person)">{{person.dob.age}}</td>
+            <td>{{person.gender}}</td>
+
             <td >
-              <button ng-click="ViewProfile(person)" >View</button>
+              <button class="btn" ng-class="ButtonColor(person)" ng-click="ViewProfile(person)" >View</button>
             </td>
            </tr>
           </tbody>
@@ -98,3 +108,4 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
 </body>
 
 </html>
+

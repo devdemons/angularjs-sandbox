@@ -14,7 +14,7 @@
             // SOURCE OF DATA
             // https://randomuser.me/documentation
 
-            var results = await $http.get("https://randomuser.me/api/?results=5");
+            var results = await $http.get("https://randomuser.me/api/?results=15");
             $scope.people = results.data.results;
             $scope.$apply()
         }
@@ -26,6 +26,19 @@
             var results = await  $http.get("https://randomuser.me/api");
             $scope.people =  $scope.people.concat(results.data.results);
             $scope.$apply()
+        }
+
+
+        $scope.AlertName = function(person){
+            person.name.first = "Will"
+        }
+
+        $scope.AddYear = function(person){
+            person.dob.age +=1
+        }
+
+        $scope.ButtonColor = function(person){
+            if (person.dob.age > 40){return 'btn-danger'}
         }
 
 
