@@ -61,13 +61,15 @@
           <thead>
             <tr>
               <th>Image</th>
-
+              
               <th>Name</th>
               <th>Age</th>
               <th>Gender</th>
               <th>Email</th>
-              <th>Phone</th>
-
+              <th>phone</th>
+              <th>Location</th>
+              
+              
             </tr>
           
           </thead>
@@ -76,6 +78,7 @@
             <td>
               <img id="user1" src="{{person.picture.thumbnail}}" ng-click="AlertName(person)" />
             </td>
+    
 
             <td>{{person.name.last}}, {{person.name.first}}</td>
             <td ng-click="AddYear(person)">{{person.dob.age}}</td>
@@ -83,6 +86,7 @@
             <td>{{person.email}}</td>
 
             <td>{{person.phone}}</td>
+            <td>{{person.location}}</td>
             <td >
               <button class="btn" ng-class="ButtonColor(person)" ng-click="ViewProfile(person)" >View</button>
             </td>
